@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('surname')->nullable();
-            $table->string('patronymic')->nullable();
-            $table->integer('age')->nullable();
-            $table->string('address')->nullable();
-            $table->unsignedSmallInteger('gender')->nullable();
+            $table->string('surname')->after('remember_token')->nullable();
+            $table->string('patronymic')->after('surname')->nullable();
+            $table->integer('age')->after('patronymic')->nullable();
+            $table->string('address')->after('age')->nullable();
+            $table->unsignedSmallInteger('gender')->after('address')->nullable();
         });
     }
 
