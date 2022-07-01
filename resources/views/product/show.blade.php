@@ -27,9 +27,9 @@
                     <div class="card">
                         <div class="card-header d-flex p-3">
                             <div class="mr-3">
-                                <a href="{{route('tag.edit', $tag->id)}}" class="btn btn-outline-success">Edit</a>
+                                <a href="{{route('product.edit', $product->id)}}" class="btn btn-outline-success">Edit</a>
                             </div>
-                            <form action="{{route('tag.delete', $tag->id)}}" method="post">
+                            <form action="{{route('product.delete', $product->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" class="btn btn-outline-danger" value="Delete">
@@ -41,11 +41,23 @@
                                 <tbody>
                                     <tr>
                                         <td>ID</td>
-                                        <td>{{ $tag->id }}</td>
+                                        <td>{{ $product->id }}</td>
                                     </tr>
                                     <tr>
                                         <td>Title</td>
-                                        <td>{{ $tag->title }}</td>
+                                        <td>{{ $product->title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>{{ $product->description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Content</td>
+                                        <td>{{ $product->content }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IMG</td>
+                                        <td><img src="{{ asset('public/images/'.$product->preview_image) }}" alt="{{ $product->preview_image }} " style="width: 100px"></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -47,7 +47,7 @@
                                         <td><a href="{{route('product.show', $product->id)}}">{{ $product->title }}</a></td>
                                         <td>{{ $product->description }}</td>
                                         <td>{{ $product->content }}</td>
-                                        <td><img src="{{ asset('storage/'.$product->preview_image) }}" alt="{{ $product->preview_image }}"></td>
+                                        <td><img src="{{ asset('public/images/'.$product->preview_image) }}" alt="{{ $product->preview_image }} " style="width: 100px"></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

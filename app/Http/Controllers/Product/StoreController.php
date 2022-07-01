@@ -15,7 +15,13 @@ class StoreController extends Controller
     {
         $data = $request->validated();
 
-        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        // $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        if($request->file('preview_image')){
+            $file= $request->file('preview_image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/images'), $filename);
+            $data['preview_image']= $filename;
+        }
 
         $tagsIds = $data['tags'];
         $colorsIds = $data['colors'];
