@@ -14,6 +14,7 @@ class CreateController extends Controller
         $tags = Tag::all();
         $colors = Color::all();
         $categories = Category::all();
+        
         return view('product.create', compact('tags', 'colors', 'categories'));
     }
 }
