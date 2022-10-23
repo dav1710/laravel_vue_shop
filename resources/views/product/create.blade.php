@@ -64,14 +64,14 @@
                       </div>
 
                     <div class="form-group">
-                        <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Choose Tag" style="width: 100%;">
+                        <select name="tag_id[]" class="tags" multiple="multiple" data-placeholder="Choose Tag" style="width: 100%;">
                           @foreach ($tags as $tag)
                             <option value="{{ $tag->id }}">{{ $tag->title }}</option>
                           @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="colors[]" class="colors" multiple="multiple" data-placeholder="Choose Color" style="width: 100%;">
+                        <select name="color_id[]" class="colors" multiple="multiple" data-placeholder="Choose Color" style="width: 100%;">
                           @foreach ($colors as $color)
                             <option value="{{ $color->id }}">{{ $color->title }}</option>
                           @endforeach

@@ -7,7 +7,7 @@ use App\Http\Requests\Product\UpdateRequest;
 use App\Models\ColorProduct;
 use App\Models\Product;
 use App\Models\ProductTag;
-
+use File;
 
 class UpdateController extends Controller
 {
@@ -15,11 +15,17 @@ class UpdateController extends Controller
     {
         $data = $request->validated();
 
-        if($request->file('preview_image')){
+        if($product->preview_image){
+            $imagePath = 'public/images/'.$product->preview_image;
+            if($product->preview_image)
+            {
+                unlink($imagePath);
+            }
             $file= $request->file('preview_image');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/images'), $filename);
             $data['preview_image']= $filename;
+            $product->update($data);
         }
         $product->update($data);
 

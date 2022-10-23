@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('product.update', $product->id) }}" method="post">
+                <form action="{{ route('product.update', $product->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="form-group">
@@ -58,12 +58,12 @@
                         <select name="category_id" class="form-control select2" style="width: 100%;">
                           <option selected="selected" disabled>Choose Category</option>
                           @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                            <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
                           @endforeach
                         </select>
                       </div>
 
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Choose Tag" style="width: 100%;">
                           @foreach ($tags as $tag)
                             <option value="{{ $tag->id }}">{{ $tag->title }}</option>
@@ -73,10 +73,10 @@
                     <div class="form-group">
                         <select name="colors[]" class="colors" multiple="multiple" data-placeholder="Choose Color" style="width: 100%;">
                           @foreach ($colors as $color)
-                            <option value="{{ $color->id }}">{{ $color->title }}</option>
+                            <option value="{{ $color->id }}" {{ old($product->colors)  == $color->id ? 'selected' : '' }}>{{ $color->title }}</option>
                           @endforeach
                         </select>
-                    </div> --}}
+                    </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-outline-success" value="Edit">
                     </div>

@@ -23,27 +23,29 @@ class StoreController extends Controller
             $data['preview_image']= $filename;
         }
 
-        $tagsIds = $data['tags'];
-        $colorsIds = $data['colors'];
-        unset($data['tags'], $data['colors']);
-
+        // $tagsIds = $data['tags'];
+        // $colorsIds = $data['colors'];
+        // unset($data['tags'], $data['colors']);
+        $data['color_id'] = json_encode( $request->color_id);
+        $data['tag_id'] = json_encode( $request->tag_id);
         $product = Product::firstOrCreate([
             'title' => $data['title'],
         ], $data);
+  
 
-        foreach($tagsIds as $tagsId){
-            ProductTag::firstOrCreate([
-                'product_id' => $product->id,
-                'tag_id' => $tagsId,
-            ]);
-        };
+        // foreach($tagsIds as $tagsId){
+        //     ProductTag::firstOrCreate([
+        //         'product_id' => $product->id,
+        //         'tag_id' => $tagsId,
+        //     ]);
+        // };
 
-        foreach($colorsIds as $colorsId){
-            ColorProduct::firstOrCreate([
-                'product_id' => $product->id,
-                'color_id' => $colorsId,
-            ]);
-        };
+        // foreach($colorsIds as $colorsId){
+        //     ColorProduct::firstOrCreate([
+        //         'product_id' => $product->id,
+        //         'color_id' => $colorsId,
+        //     ]);
+        // };
 
         return redirect()->route('product.index');
     }

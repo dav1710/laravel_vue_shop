@@ -9,4 +9,13 @@ class Product extends Model
 {
     protected $table = 'products';
     protected $guarded = false;
+
+    public function category(){
+
+        return $this->belongsTo('App\Category');
+    }
+    public function colors(){
+
+        return $this->hasMany(ColorProduct::class);
+    }
 }
